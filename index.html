@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contrat de Service - Pascal Thibault, T.S.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init("I9RjdZBgbD2vAzE");
+      })();
+    </script>
+    <style>
+      :root {
+        --primary-color: #2c5282;
+        --text-color: #2d3748;
+        --bg-color: #ffffff;
+        --border-color: #e2e8f0;
+        --success-color: #38a169;
+        --error-color: #e53e3e;
+      }
+
+      body {
+        background-color: #f7fafc;
+        color: var(--text-color);
+        font-family: 'Open Sans', sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .document-container {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: white;
+        padding: 25mm;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: 4px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-family: 'Merriweather', serif;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-family: 'Merriweather', serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #cbd5e0;
+        padding-bottom: 5px;
+      }
+
+      h3 {
+        font-family: 'Merriweather', serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: #4a5568;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      p, li, td, th, label {
+        font-size: 11pt;
+        text-align: justify;
+      }
+
+      .form-section {
+        background-color: #f8fafc;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: #ebf8ff;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #bee3f8;
+      }
+
+      .radio-group label {
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--primary-color);
+      }
+
+      input[type='text'], input[type='email'], input[type='tel'], input[type='date'] {
+        background-color: white;
+        border: 1px solid #cbd5e0;
+        padding: 8px;
+        font-size: 11pt;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        font-size: 11pt;
+      }
+
+      table th, table td {
+        border: 1px solid #a0aec0;
+        padding: 8px 12px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #edf2f7;
+        font-weight: bold;
+      }
+
+      .signature-pad {
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+        background: #fff;
+        cursor: crosshair;
+        touch-action: none;
+        width: 100%;
+        max-width: 400px;
+        height: 150px;
+      }
+
+      .signature-pad.validated {
+        border-color: var(--success-color);
+        border-width: 3px;
+        background-color: #f0fff4;
+        pointer-events: none;
+      }
+
+      .signature-controls {
+        margin-top: 5px;
+        display: flex;
+        gap: 10px;
+        max-width: 400px;
+      }
+
+      .btn-small {
+        padding: 5px 15px;
+        font-size: 0.9em;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        color: white;
+      }
+
+      .btn-clear {
+        background-color: #718096;
+      }
+
+      .btn-validate {
+        background-color: var(--success-color);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .client-block {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed #e2e8f0;
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 10px 0;
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .checkbox-container input[type='checkbox'] {
+        margin-top: 5px;
+      }
+
+      #submitBtn {
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1.2em;
+        padding: 15px 30px;
+        width: 100%;
+        margin-top: 30px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      #submitBtn:hover {
+        background-color: #1a365d;
+      }
+
+      #submitBtn:disabled {
+        background-color: #a0aec0;
+        cursor: not-allowed;
+      }
+
+      .ts-info {
+        background-color: #edf2f7;
+        padding: 15px;
+        border-radius: 4px;
+        font-size: 0.95em;
+      }
+
+      .required::after {
+        content: ' *';
+        color: red;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .document-container {
+          box-shadow: none;
+          margin: 0;
+          width: 100%;
+          max-width: none;
+          padding: 20px;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="document-container">
+      <div style="text-align: center; margin-bottom: 20px">
+        <p style="text-align: center; color: #718096; font-size: 0.9em" class="no-print">
+          <em>Veuillez remplir le formulaire ci-dessous. Les sections s'adapteront automatiquement à votre choix.</em>
+        </p>
+      </div>
+
+      <h1>
+        CONTRAT DE SERVICE PROFESSIONNEL<br /><span style="font-size: 0.7em; font-weight: normal">Travailleur Social - Services Cliniques</span>
+      </h1>
+
+      <form id="contractForm" onsubmit="handleFormSubmit(event)">
+        <h2>1. IDENTIFICATION DES PARTIES</h2>
+
+        <div class="form-section no-print">
+          <p><strong>Sélectionnez le type de service :</strong></p>
+          <div class="radio-group">
+            <label><input type="radio" name="serviceType" value="Individuel" checked onchange="updateFormLayout()" /> Individuel</label>
+            <label><input type="radio" name="serviceType" value="Couple" onchange="updateFormLayout()" /> Couple</label>
+            <label><input type="radio" name="serviceType" value="Familial" onchange="updateFormLayout()" /> Familial</label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>CLIENT(E)S</h3>
+          <div class="client-block">
+            <label class="required">Nom complet (Client 1) :</label>
+            <input type="text" name="client1_name" required placeholder="Prénom Nom" />
+            <label class="required">Date de naissance :</label>
+            <input type="date" name="client1_dob" required />
+            <label class="required">Courriel :</label>
+            <input type="email" name="client1_email" required placeholder="exemple@domaine.com" />
+            <label class="required">Téléphone :</label>
+            <input type="tel" name="client1_phone" required placeholder="514-000-0000" />
+            <label class="required">Adresse complète :</label>
+            <input type="text" name="client1_address" required placeholder="Numéro, rue, ville, code postal" />
+          </div>
+
+          <div id="client2_section" class="client-block hidden">
+            <h3>CLIENT(E) 2 (Conjointe ou Parent 2)</h3>
+            <label class="required-conditional">Nom complet :</label>
+            <input type="text" id="client2_name" name="client2_name" placeholder="Prénom Nom" />
+            <label class="required-conditional">Date de naissance :</label>
+            <input type="date" id="client2_dob" name="client2_dob" />
+            <label>Courriel (si différent) :</label>
+            <input type="email" name="client2_email" />
+            <label>Téléphone :</label>
+            <input type="tel" name="client2_phone" />
+            <p><em>L'adresse du client 1 sera utilisée comme adresse principale pour le dossier.</em></p>
+          </div>
+
+          <div id="children_section" class="hidden">
+            <h3>ENFANTS / AUTRES MEMBRES</h3>
+            <table id="childrenTable">
+              <thead>
+                <tr>
+                  <th>Nom complet</th>
+                  <th>Date de naissance</th>
+                  <th class="no-print" style="width: 50px"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" name="child_name[]" placeholder="Nom de l'enfant" /></td>
+                  <td><input type="date" name="child_dob[]" /></td>
+                  <td class="no-print"></td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn-small no-print" onclick="addChildRow()" style="background-color: var(--primary-color)">
+              + Ajouter un enfant
+            </button>
+          </div>
+        </div>
+
+        <div class="ts-info">
+          <h3>TRAVAILLEUR SOCIAL (PRESTATAIRE)</h3>
+          <p><strong>Nom :</strong> Pascal Thibault, T.S.</p>
+          <p><strong>Permis OTSTCFQ :</strong> THIP2001100TS</p>
+          <p><strong>Coordonnées :</strong> 438-867-5972 | info@humanistas.ca</p>
+          <p><strong>Lieu de pratique :</strong> Carignan, Québec | humanistas.ca</p>
+        </div>
+
+        <h2>2. NATURE ET OBJECTIFS DES SERVICES</h2>
+        <p>Le travailleur social offre des services cliniques d'évaluation et d'intervention psychosociale. Les services visent à soutenir le fonctionnement social de la personne, du couple ou de la famille, à favoriser le développement optimal en interaction avec l'environnement et à résoudre les difficultés identifiées.</p>
+
+        <h2>3. CONSIDÉRATIONS PROFESSIONNELLES ET DÉONTOLOGIQUES</h2>
+
+        <h3>3A) Cadre légal</h3>
+        <p>Le travailleur social est membre en règle de l'Ordre des travailleurs sociaux et des thérapeutes conjugaux et familiaux du Québec (OTSTCFQ). Il exerce conformément au Code de déontologie des travailleurs sociaux du Québec.</p>
+
+        <h3>3B) Confidentialité</h3>
+        <p>Le contenu des rencontres est strictement confidentiel. Aucune information ne sera transmise à un tiers sans le consentement écrit du client, sauf dans les situations d'exception prévues par la loi (ex: risque imminent de mort ou de blessures graves pour la personne ou autrui, situation compromettant le développement d'un enfant - LPJ).</p>
+
+        <div style="border: 2px solid var(--primary-color); padding: 15px; border-radius: 4px; background-color: #f0f4f8">
+          <h3>SECTION 3C) OUTIL DE PRISE DE NOTES (FIREFLIES AI)</h3>
+          <p>Pour une meilleure qualité de présence, j'utilise un outil sécurisé de prise de notes automatique (Fireflies AI). Vos données sont cryptées et protégées selon les normes PIPEDA. Vous pouvez refuser sans impact sur les services.</p>
+          <div class="checkbox-container">
+            <input type="radio" id="fireflies_accept" name="fireflies_consent" value="Accept" required />
+            <label for="fireflies_accept"><strong>J'accepte</strong> l'utilisation de Fireflies AI</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="radio" id="fireflies_refuse" name="fireflies_consent" value="Refus" />
+            <label for="fireflies_refuse"><strong>Je refuse</strong> (notes manuscrites)</label>
+          </div>
+        </div>
+
+        <h2>4. MODALITÉS DES RENCONTRES</h2>
+        <p>Les rencontres se déroulent principalement au bureau professionnel situé à Carignan ou en mode virtuel sécurisé.</p>
+        <p><strong>Durée prévue des séances pour ce contrat :</strong> <span id="duration_display" style="font-weight: bold; color: var(--primary-color)">50 minutes</span></p>
+
+        <h2>5. CONSIDÉRATIONS FINANCIÈRES</h2>
+        <h3>Tarifs en vigueur</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Durée</th>
+              <th>Tarif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="row_ind" style="background-color: #e6fffa">
+              <td>Individuel</td>
+              <td>50 min</td>
+              <td>100 $</td>
+            </tr>
+            <tr id="row_couple">
+              <td>Couple</td>
+              <td>75 min</td>
+              <td>150 $</td>
+            </tr>
+            <tr id="row_fam">
+              <td>Familial</td>
+              <td>90 min</td>
+              <td>180 $</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Modalités de paiement :</strong> Le paiement est exigible à la fin de chaque séance (virement Interac, argent comptant). Un reçu officiel pour assurances/impôts sera émis.</p>
+        <p><strong>Politique d'annulation :</strong> Toute annulation doit être faite au moins <strong>24 heures à l'avance</strong>. À défaut, des frais administratifs de 50 $ seront facturés.</p>
+
+        <h2>6. GESTION DU DOSSIER PROFESSIONNEL</h2>
+        <p>Un dossier professionnel confidentiel est tenu pour chaque client. Conformément aux normes, ce dossier sera conservé dans un lieu sécurisé pendant 5 ans après la fermeture du dossier, après quoi il sera détruit de manière sécuritaire.</p>
+
+        <h2>7. COMMUNICATIONS ET DISPONIBILITÉ</h2>
+        <p>Le travailleur social répond aux messages dans un délai de 24 à 48 heures ouvrables. <br /><strong>URGENCES :</strong> Ce service n'est pas un service d'urgence. En cas de crise immédiate, veuillez composer le <strong>911</strong>, contacter Info-Social au <strong>811</strong> ou vous rendre à l'hôpital le plus proche. <br />Centre de prévention du suicide : 1 866 APPELLE.</p>
+
+        <h2>8. LIMITES DE LA RELATION PROFESSIONNELLE</h2>
+        <p>Pour assurer l'objectivité et la qualité des services, aucune relation d'affaires, amicale ou amoureuse ne peut être entretenue entre le travailleur social et le client pendant la durée des services et pour une période subséquente, conformément au Code de déontologie.</p>
+
+        <h2>9. RÉSOLUTION DE CONFLITS ET PLAINTES</h2>
+        <p>En cas d'insatisfaction, le client est invité à en discuter avec le travailleur social. Si le différend persiste, le client peut s'adresser au bureau du Syndic de l'OTSTCFQ pour déposer une plainte.</p>
+
+        <h2>10. CONSENTEMENT ET SIGNATURES</h2>
+        <div class="checkbox-container">
+          <input type="checkbox" id="consent_read" name="consent_read" required />
+          <label for="consent_read" class="required">Je déclare avoir lu et compris le présent contrat de service.</label>
+        </div>
+        <div class="checkbox-container">
+          <input type="checkbox" id="consent_free" name="consent_free" required />
+          <label for="consent_free" class="required">Je consens librement et de manière éclairée à recevoir les services professionnels selon les modalités décrites.</label>
+        </div>
+
+        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px">
+          <div>
+            <h3>SIGNATURE CLIENT 1</h3>
+            <p>Veuillez signer dans le cadre ci-dessous :</p>
+            <canvas id="sig1" class="signature-pad"></canvas>
+            <input type="hidden" name="signature1_data" id="sig1_data" required />
+            <div class="signature-controls no-print">
+              <button type="button" class="btn-small btn-clear" onclick="clearSignature('sig1')">Effacer</button>
+              <button type="button" class="btn-small btn-validate" onclick="validateSignature('sig1')">Valider ✓</button>
+            </div>
+            <div id="sig1_status" style="color: var(--error-color); font-size: 0.8em; margin-top: 5px">Signature non validée</div>
+          </div>
+
+          <div id="sig2_container" class="hidden">
+            <h3>SIGNATURE CLIENT 2</h3>
+            <p>Veuillez signer dans le cadre ci-dessous :</p>
+            <canvas id="sig2" class="signature-pad"></canvas>
+            <input type="hidden" name="signature2_data" id="sig2_data" />
+            <div class="signature-controls no-print">
+              <button type="button" class="btn-small btn-clear" onclick="clearSignature('sig2')">Effacer</button>
+              <button type="button" class="btn-small btn-validate" onclick="validateSignature('sig2')">Valider ✓</button>
+            </div>
+            <div id="sig2_status" style="color: var(--error-color); font-size: 0.8em; margin-top: 5px">Signature non validée</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px">
+          <h3>SIGNATURE DU TRAVAILLEUR SOCIAL</h3>
+          <p><strong>Pascal Thibault, T.S.</strong></p>
+          <p style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: var(--primary-color)">Pascal Thibault</p>
+          <p>Date : <span id="currentDate"></span></p>
+        </div>
+
+        <button type="submit" id="submitBtn" class="no-print">ENVOYER LE CONTRAT SIGNÉ</button>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('currentDate').innerText = new Date().toLocaleDateString('fr-CA');
+
+      function updateFormLayout() {
+        const type = document.querySelector('input[name="serviceType"]:checked').value;
+        const client2Sec = document.getElementById('client2_section');
+        const childrenSec = document.getElementById('children_section');
+        const sig2Container = document.getElementById('sig2_container');
+        const durationDisplay = document.getElementById('duration_display');
+
+        document.getElementById('row_ind').style.backgroundColor = 'transparent';
+        document.getElementById('row_couple').style.backgroundColor = 'transparent';
+        document.getElementById('row_fam').style.backgroundColor = 'transparent';
+
+        document.getElementById('client2_name').removeAttribute('required');
+        document.getElementById('client2_dob').removeAttribute('required');
+        document.getElementById('sig2_data').removeAttribute('required');
+
+        if (type === 'Individuel') {
+          client2Sec.classList.add('hidden');
+          childrenSec.classList.add('hidden');
+          sig2Container.classList.add('hidden');
+          durationDisplay.innerText = '50 minutes (100 $)';
+          document.getElementById('row_ind').style.backgroundColor = '#E6FFFA';
+        } else if (type === 'Couple') {
+          client2Sec.classList.remove('hidden');
+          childrenSec.classList.add('hidden');
+          sig2Container.classList.remove('hidden');
+          durationDisplay.innerText = '75 minutes (150 $)';
+          document.getElementById('row_couple').style.backgroundColor = '#E6FFFA';
+          document.getElementById('client2_name').setAttribute('required', 'true');
+          document.getElementById('client2_dob').setAttribute('required', 'true');
+          document.getElementById('sig2_data').setAttribute('required', 'true');
+        } else if (type === 'Familial') {
+          client2Sec.classList.remove('hidden');
+          childrenSec.classList.remove('hidden');
+          sig2Container.classList.remove('hidden');
+          durationDisplay.innerText = '90 minutes (180 $)';
+          document.getElementById('row_fam').style.backgroundColor = '#E6FFFA';
+          document.getElementById('client2_name').setAttribute('required', 'true');
+          document.getElementById('sig2_data').setAttribute('required', 'true');
+        }
+
+        resizeCanvas('sig1');
+        resizeCanvas('sig2');
+      }
+
+      function addChildRow() {
+        const table = document.getElementById('childrenTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+          <td><input type="text" name="child_name[]" placeholder="Nom de l'enfant"></td>
+          <td><input type="date" name="child_dob[]"></td>
+          <td class="no-print"><button type="button" onclick="this.parentElement.parentElement.remove()" style="background: #E53E3E; color: white; border: none; padding: 5px; border-radius: 4px;">X</button></td>
+        `;
+      }
+
+      const canvases = {};
+
+      function initCanvas(id) {
+        const canvas = document.getElementById(id);
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
+        function draw(e) {
+          if (!isDrawing) return;
+          e.preventDefault();
+          const rect = canvas.getBoundingClientRect();
+          const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+          const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+          const x = clientX - rect.left;
+          const y = clientY - rect.top;
+          ctx.beginPath();
+          ctx.moveTo(lastX, lastY);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle = '#000';
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+          lastX = x;
+          lastY = y;
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+          isDrawing = true;
+          const rect = canvas.getBoundingClientRect();
+          lastX = e.clientX - rect.left;
+          lastY = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+          isDrawing = true;
+          const rect = canvas.getBoundingClientRect();
+          lastX = e.touches[0].clientX - rect.left;
+          lastY = e.touches[0].clientY - rect.top;
+        }, { passive: false });
+
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchmove', draw, { passive: false });
+        canvas.addEventListener('mouseup', () => (isDrawing = false));
+        canvas.addEventListener('mouseout', () => (isDrawing = false));
+        canvas.addEventListener('touchend', () => (isDrawing = false));
+        canvases[id] = ctx;
+      }
+
+      function clearSignature(id) {
+        const canvas = document.getElementById(id);
+        const ctx = canvases[id];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.classList.remove('validated');
+        document.getElementById(id + '_data').value = '';
+        document.getElementById(id + '_status').innerText = 'Signature non validée';
+        document.getElementById(id + '_status').style.color = '#E53E3E';
+      }
+
+      function validateSignature(id) {
+        const canvas = document.getElementById(id);
+        const blank = document.createElement('canvas');
+        blank.width = canvas.width;
+        blank.height = canvas.height;
+        if (canvas.toDataURL() === blank.toDataURL()) {
+          alert('Veuillez signer avant de valider.');
+          return;
+        }
+        const dataUrl = canvas.toDataURL('image/png');
+        document.getElementById(id + '_data').value = dataUrl;
+        canvas.classList.add('validated');
+        document.getElementById(id + '_status').innerText = 'Signature validée ✓';
+        document.getElementById(id + '_status').style.color = '#38A169';
+      }
+
+      function resizeCanvas(id) {
+        const canvas = document.getElementById(id);
+        if (canvas.offsetParent !== null) {
+          // Canvas visible
+        }
+      }
+
+      function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const type = document.querySelector('input[name="serviceType"]:checked').value;
+        const sig1 = document.getElementById('sig1_data').value;
+        const sig2 = document.getElementById('sig2_data').value;
+
+        if (!sig1) {
+          alert('La signature du Client 1 est manquante.');
+          return;
+        }
+
+        if (type !== 'Individuel' && !sig2) {
+          alert('La signature du Client 2 est manquante.');
+          return;
+        }
+
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = 'Envoi en cours...';
+        btn.disabled = true;
+
+        const formData = new FormData(e.target);
+        const templateParams = {
+          serviceType: type,
+          client1_name: formData.get('client1_name'),
+          client1_dob: formData.get('client1_dob'),
+          client1_email: formData.get('client1_email'),
+          client1_phone: formData.get('client1_phone'),
+          client1_address: formData.get('client1_address'),
+          client2_name: formData.get('client2_name') || 'N/A',
+          client2_dob: formData.get('client2_dob') || 'N/A',
+          client2_email: formData.get('client2_email') || 'N/A',
+          client2_phone: formData.get('client2_phone') || 'N/A',
+          fireflies_consent: formData.get('fireflies_consent'),
+          consent_read: formData.get('consent_read') ? 'Oui' : 'Non',
+          consent_free: formData.get('consent_free') ? 'Oui' : 'Non',
+          signature1_data: sig1,
+          signature2_data: sig2 || '',
+          submission_date: new Date().toLocaleString('fr-CA')
+        };
+
+        emailjs.send('service_mwx42b9', 'template_nl8ewe8', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            btn.innerText = 'Envoyé avec succès ✓';
+            btn.style.backgroundColor = '#38a169';
+            alert('CONTRAT ENVOYÉ AVEC SUCCÈS !\n\nUne copie a été transmise à info@humanistas.ca avec toutes les signatures.\n\nMerci !');
+          }, function(error) {
+            console.log('FAILED...', error);
+            btn.innerText = 'Erreur - Réessayer';
+            btn.disabled = false;
+            btn.style.backgroundColor = '#e53e3e';
+            alert('ERREUR lors de l\'envoi du contrat.\n\nVeuillez réessayer ou contacter info@humanistas.ca directement.\n\nErreur: ' + error.text);
+          });
+      }
+
+      window.onload = function () {
+        initCanvas('sig1');
+        initCanvas('sig2');
+        updateFormLayout();
+      };
+    </script>
+  </body>
+</html>
